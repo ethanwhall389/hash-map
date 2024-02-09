@@ -1,3 +1,11 @@
+class Node {
+    constructor(key, value) {
+        this.key = key;
+        this.value = value;
+        this.next = null;
+    }
+}
+
 class HashMap {
 
     constructor(){
@@ -48,14 +56,14 @@ class HashMap {
         if(this.hashTable[index]) {
             if (this.hashTable[index].key === key) {
                 //overwrite
-                this.hashTable[index] = {key, value, next: null};
+                this.hashTable[index] = new Node(key, value);
             } else {
                 //chain
-                this.hashTable[index].next = {key, value, next: null};
+                this.hashTable[index].next = new Node(key, value);
             }
         } 
         else {
-            this.hashTable[index] = {key, value, next: null};
+            this.hashTable[index] = new Node(key, value);
         }
 
         //Check to see if buckets (capacity) need growth
